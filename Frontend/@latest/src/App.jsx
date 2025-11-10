@@ -4,32 +4,60 @@ import viteLogo from '/vite.svg'
 import './App.css'
 
 function App() {
-   
+  const [form, setForm] = useState({ to: '', subject: '', text: '' })
+  const [loading, setLoding] = useState(false);
+  const [status, setStatus] = useState('');
+
+  const handlechange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
+
+  const handleSubmit = async (e) => {
+    e.preventDefault(); setLoding(true); setStatus('');
+    try {
+      await axios.post("http://localhost:5674/sendmail", form);
+      setStatus("Email sent Successfully!");
+      setForm({ to: '', subject: "", text: '' });
+    }
+    catch (err) {
+      setStatus("Failed to send Email.Check backend or SMTP configuration");
+    }
+    finally {
+      setLoding(false);
+    }
+  }
+
   return (
-     <div className="flex justify-center items-center h-screen bg-gradient-to-br from-indigo-500 to-purple-600">
+    <div className="flex justify-center items-center h-screen bg-gradient-to-br from-indigo-500 to-purple-600">
       <div className="bg-white shadow-2xl rounded-2xl p-8 w-96">
         <h1 className="text-2xl font-bold text-center mb-6 text-gray-800">
           Nodemailer
         </h1>
 
-        <form >
+        <form onSubmit={handleSubmit}>
           <label className="block mb-2 text-gray-700">Recipient</label>
-          <input type="email"  name="to"  required className="w-full p-2 mb-4 border rounded focus:outline-none focus:ring-2 focus:ring-indigo-400" placeholder="user1@gmail.com" />
+          <input type="email" name="to" value={form.to} onChange={handlechange} required className="w-full p-2 mb-4 border rounded focus:outline-none focus:ring-2 focus:ring-indigo-400" placeholder="user1@gmail.com" />
 
           <label className="block mb-2 text-gray-700">Subject</label>
-          <input type="text" name="subject"  required className="w-full p-2 mb-4 border rounded focus:outline-none focus:ring-2 focus:ring-indigo-400" placeholder="Email subject" />
+          <input type="text" name="subject" value={form.subject} onChange={handlechange} required className="w-full p-2 mb-4 border rounded focus:outline-none focus:ring-2 focus:ring-indigo-400" placeholder="Email subject" />
 
           <label className="block mb-2 text-gray-700">Message</label>
-          <textarea name="text" required rows="5" className="w-full p-2 mb-4 border rounded focus:outline-none focus:ring-2 focus:ring-indigo-400" placeholder="Type your message here..." />
+          <textarea name="text" required rows="5" value={form.text} onChange={handlechange} className="w-full p-2 mb-4 border rounded focus:outline-none focus:ring-2 focus:ring-indigo-400" placeholder="Type your message here..." />
 
-          <button type="submit"   className="w-full bg-indigo-600 text-white py-2 rounded-lg hover:bg-indigo-700 transition disabled:bg-gray-400">
-          Send Email
+          <button type="submit" disabled={loading} className="w-full bg-indigo-600 text-white py-2 rounded-lg hover:bg-indigo-700 transition disabled:bg-gray-400">
+            {loading ? "Sending..." : "Send Email"}
           </button>
 
 
         </form>
 
-        
+
+        {status && (
+          <p className={`text-center mt-4 font-medium ${status.includes("Sent") ? 'text-green-600' : "text-red-600"}`}>
+            {status}
+          </p>
+
+        )}
+
+
       </div>
     </div>
   )
