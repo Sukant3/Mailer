@@ -1,16 +1,45 @@
-# React + Vite
+MailPilot (Mailer) App — Full Stack Email Sender using Node.js + React
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A simple Full Stack Mailer Application built using Node.js (Express) for backend and React (Vite) for frontend.
+It allows users to send an email through a form, with an auto-reply system that confirms receipt of the message.
+Perfect for learning Nodemailer, SMTP configuration, and full-stack form handling.
+________________________________________________________________________________________
+🚀 Features
 
-Currently, two official plugins are available:
+📮 Send emails directly using Gmail SMTP
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+🤖 Automatic acknowledgment (auto-reply) to sender
 
-## React Compiler
+🔐 Secure credentials using .env file
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+🎨 Clean UI using Tailwind CSS
 
-## Expanding the ESLint configuration
+⚙️ Built with Vite + React + Express
+_____________________________________________________________________
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+🧩 Tech Stack
+
+Frontend:
+
+React (Vite)
+
+Tailwind CSS
+
+Axios (for API requests)
+
+Backend:
+
+Node.js
+
+Express.js
+
+Nodemailer
+
+dotenv
+
+CORS
+_____________________________________________________________________________________________________
+
+🔥 Contribution
+
+Feel free to contribute and Suggestion !
