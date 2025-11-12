@@ -30,11 +30,11 @@ function App() {
     <div className="flex justify-center items-center h-screen bg-gradient-to-br from-indigo-500 to-purple-600">
       <div className="bg-white shadow-2xl rounded-2xl p-8 w-96">
         <h1 className="text-2xl font-bold text-center mb-6 text-gray-800">
-          Nodemailer
+         MailPilot
         </h1>
 
         <form onSubmit={handleSubmit}>
-          <label className="block mb-2 text-gray-700">Recipient</label>
+          <label className="block mb-2 text-gray-700">Your Email</label>
           <input
             type="email"
             name="to"
